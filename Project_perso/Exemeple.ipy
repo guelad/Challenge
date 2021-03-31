@@ -1,0 +1,58 @@
+Exemeple
+#%%
+from zipfile import ZipFile
+file = "MMM_EcoCompt_Archives (1).zip"
+  
+# ouvrir le fichier zip en mode lecture
+with ZipFile(file, 'r') as zip: 
+    # afficher tout le contenu du fichier zip
+    zip.printdir() 
+  
+    # extraire tous les fichiers
+    a=print('extraction...') 
+    zip.extractall() 
+#%%
+from pandas import json_normalize
+data = [json.loads(line) for line in ]
+open('MMM_EcoCompt_X2H19070220_Archive2020.json','r')
+
+#Nous allons changer notre chifier json en dataframe, car nous avons constaté
+#que on a méme coodonnées et meme type 
+#%%
+
+df = json_normalize(data) #Results contain the required data
+print(df)
+
+# %%
+a = df.describe()
+print((a))
+# %%
+df.plot()
+# %%
+import matplotlib.pyplot as plt
+#plt.figure(figsize(5,20))
+plt.subplot()
+plt.hist(a, bins=40, density=False)
+plt.title('Histogramme (intensity)')
+plt.ylabel('intensity')
+
+plt.subplot
+
+
+plt.hist(a, bins=40, density=True)
+plt.title('Histogramme (laneId)')
+plt.ylabel('laneId')
+
+plt.tight_layout()
+
+
+# %%
+import seaborn as sns
+plt.figure(figsize=(10,6))
+sns.barplot(x=a['intensity'], y=a['laneId'], palette="Blues_r")
+plt.xlabel('Intensity', fontsize=15, color='#2980b9')
+plt.ylabel('laneId', fontsize=15, color='#2980b9')
+#plt.title("Loyer moyen par arrondissement à Paris sur seloger.com\n", fontsize=18, color='#3742fa')
+plt.xticks(rotation= 45)
+plt.tight_layout()
+# %%
